@@ -37,8 +37,10 @@ app.post('/api/fileanalyse', upload.single('upfile'), (req, res) => {
 });
 
 // Listen
-const listener = app.listen(process.env.PORT || 3000, () => {
-  console.log('Your app is listening on port ' + listener.address().port);
-});
+if (require.main === module) {
+  const listener = app.listen(process.env.PORT || 3000, () => {
+    console.log('Your app is listening on port ' + listener.address().port);
+  });
+}
 
 module.exports = app;
